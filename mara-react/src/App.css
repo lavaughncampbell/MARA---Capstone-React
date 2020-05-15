@@ -143,3 +143,11 @@ img {
   font-size: 20px;
   right: 120px;
 }
+
+
+.loading {
+  color: white;
+  position: absolute;
+  right: 500px;
+  top: 250px;
+}

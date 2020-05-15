@@ -50,8 +50,8 @@ export default class Loading extends React.Component {
       <div>
         {!this.state.done ? (
           <FadeIn>
-            <div class="d-flex justify-content-center align-items-center">
-              <h1>fetching pizza</h1>
+            <div className="loading" >
+              <h1>fetching MARA</h1>
               {!this.state.loading ? (
                 <Lottie options={defaultOptions} height={120} width={120} />
               ) : (
