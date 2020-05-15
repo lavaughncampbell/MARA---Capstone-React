@@ -1,17 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #B9DFFF;
@@ -24,69 +10,136 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/*.App-Loading {
-  height: 210px;
-  padding-bottom: 50px;
-}
-*/
-
-
-.App-Loading {
-/*  animation: fadeOut ease 1s;
-  -webkit-animation: fadeOut ease 1s;
-  -moz-animation: fadeOut ease 1s;
-  -o-animation: fadeOut ease 1s;
-  -ms-animation: fadeOut ease 1s;*/
-}
-@keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
-@-moz-keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
-@-webkit-keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
-@-o-keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
 h1 {
   font-family: 'Bungee'; 
+}
+
+
+.home-page {
+  background-color: #B9DFFF;
+  display: flex; 
+  flex-direction: row;
+  text-align: left;
+}
+
+img {
+  size: 10px;
+}
+
+.Header {
+  text-align: right;
+}
+
+.title {
+  font-family: "Helvetica Neue"; 
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  bottom: 500px;
+  padding-left: 100px;
+
+}
+
+.title-2 {
+  font-family: "Helvetica Neue"; 
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  bottom: 450px;
+  padding-left: 100px;
+
+}
+
+.home-p {
+  color: white;
+  text-align: center;
+  position: absolute;
+  bottom: 360px;
+  font-size: 25px;
+  padding-left: 100px;
+}
+
+.home-2 {
+  color: white;
+  text-align: center;
+  position: absolute;
+  bottom: 330px;
+  font-size: 25px;
+  padding-left: 100px;
+}
+
+.home-3 {
+  color: white;
+  text-align: center;
+  position: absolute;
+  bottom: 300px;
+  font-size: 25px;
+  padding-left: 100px;
+}
+
+img {
+  position: absolute;
+  right: 100px;
+  bottom: 210px;
+  height: 50%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 80px;
+  left: 100px;
+  font-size: 30px;
+}
+
+.sign-up {
+  position: absolute;
+  left: 330px;
+  box-sizing: border-box;
+  width: 60%;
+  border-radius: 0.2em;
+}
+
+.sign-up-email {
+  border-radius: 0.2em;
+}
+
+.logo {
+  position: absolute;
+  left: 40px;
+  top: 20px;
+  height: 10%;
+
+}
+
+.logo-mara {
+  position: absolute;
+  left: 115px;
+  top: 07px;
+  height: 14%;
+}
+
+.nav-signup {
+  background: white;
+  color: #E78200;
+  font-family: "Chalkboard";
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  top: 40px;
+  right: 80px;
+}
+
+.nav-login {
+  position: relative;
+  right: 100px;
+  color: #004987;
+  font-weight: bold;
+  font-family: "Chalkboard";
+  top: 40px;
+  font-size: 20px;
+  right: 120px;
 }

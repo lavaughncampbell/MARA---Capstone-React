@@ -5,7 +5,6 @@ import ReactLoading from "react-loading";
 import "bootstrap/dist/css/bootstrap.css";
 import '../App.css'; 
 import * as legoData from "../legoloading.json";
-import * as doneData from "../doneloading.json";
 import HomePage from '../HomePage'; 
 
 
@@ -21,7 +20,7 @@ rendererSettings: {
 const defaultOptions2 = {
   loop: false,
   autoplay: true,
-  animationData: doneData.default,
+  // animationData: doneData.default,
   rendererSettings: {
     preserveAspectRatio: "xMidYMid slice"
   }
@@ -31,7 +30,6 @@ export default class Loading extends React.Component {
 	constructor(props) {
 		super(props); 
 		this.state = {
-			loading: undefined,
 			done: undefined
 		}; 
 	}
@@ -52,28 +50,25 @@ export default class Loading extends React.Component {
 	}
 
 	render() {
-    return (
-      <div>
-        {!this.state.done ? (
-          <FadeIn>
-            <div class="d-flex justify-content-center align-items-center">
-              <h1>fetching MARA</h1>
-              {!this.state.loading ? (
-                <Lottie options={defaultOptions} height={120} width={120} />
-              ) : (
-                <Lottie options={defaultOptions2} height={120} width={120} />
-              )}
-            </div>
-          </FadeIn>
-        ) : (
-          <HomePage />
+		return (
+			<div>
+			{!this.state.done ? (
+				<div className="App-Loading">
+					<img src="/images/mara-logo.png" alt="" /> 
+        		</div>
+        		) : (
+        	<FadeIn>
+  				<div class="d-flex justify-content-center align-items-center">
+    				<h1>fetching Mara</h1>
+    				<Lottie options={defaultOptions} height={120} width={120} />                      
+  				</div>
+			</FadeIn>
         )}
+        <div>
+        	<HomePage />
+        </div>
       </div>
     );
   }
 }
-
-
-
-
 			
