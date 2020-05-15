@@ -8,7 +8,7 @@ import MainContent from './MainContent'
 function App() {
   return (
     <div className="App">
-      <HomePage />
+      <Loading />
     </div>
   );
 }
