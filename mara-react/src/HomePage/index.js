@@ -4,16 +4,6 @@ import Footer from '../Footer'
 
 
 function HomePage() {
-	const styles = {
-    color: "#E78200", 
-    backgroundColor: "white",
-    
-  }
-
-  const stylesTwo = {
-  	height: 50,
-  	width: 50
-  }
 	return(
 		<div className="Header">
 			<nav>

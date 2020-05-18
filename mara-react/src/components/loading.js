@@ -50,7 +50,7 @@ export default class Loading extends React.Component {
       <div>
         {!this.state.done ? (
           <FadeIn>
-            <div className="loading" >
+            <div className="loading">
               <h1>fetching MARA</h1>
               {!this.state.loading ? (
                 <Lottie options={defaultOptions} height={120} width={120} />
