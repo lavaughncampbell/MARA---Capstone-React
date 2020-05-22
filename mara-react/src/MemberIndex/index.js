@@ -22,6 +22,8 @@ export default class MemberIndex extends Component {
 	}
 	// call members when component is mounted to see them on the page 
 	// define a method called get members 
+
+	// <---------INDEX-------------->
 	getMembers = async () => {
 		try {
 			// load members from member index route in the api 
@@ -54,7 +56,7 @@ export default class MemberIndex extends Component {
 		}
 	}
 
-
+	// <---------CREATE-------------->
 	createMember = (memberToAdd) => {
 		console.log("here is the member you are trying to add")
 		console.log(memberToAdd)
@@ -83,36 +85,44 @@ export default class MemberIndex extends Component {
 		console.log("here is what we get back after trying to add a member")
 		console.log(createMemberJson)
 
-		// several ways to get the member to appear on screen automatically 
+		// let's not add a member to the screen if their is errors on the back end
+		// we don't want to add the member to the screen 
+		if(createMemberResponse.status === 201) {
 
-		// really quick and dirty 
-		// this.getMembers()
+			// several ways to get the member to appear on screen automatically 
 
-		// we could push it into the array in state 
-		const state = this.state 
-		state.members.push(createMemberJson.data)
-		this.setState(state)
+			// really quick and dirty 
+			// this.getMembers()
 
-		// or this...
-		// const members = this.state.members 
-		// members.push(createMemberJson.data)
-		// this.setState({ members: members})
+			// we could push it into the array in state 
+			const state = this.state 
+			state.members.push(createMemberJson.data)
+			this.setState(state)
 
-		// or we could be super cool and use some newer syntax 
-		// this is called spread operator 
-		// // in REACT people are always using new syntax 
-		// this.setState({
-		// 	//"...this.state.member means "all the members that are"
-		// 	// already in thit this.state.members array 
-		// 	members: [...this.state.members, createMemberJson.data]
-		// })
+			// or this...
+			// const members = this.state.members 
+			// members.push(createMemberJson.data)
+			// this.setState({ members: members})
+
+			// or we could be super cool and use some newer syntax 
+			// this is called spread operator 
+			// // in REACT people are always using new syntax 
+			// this.setState({
+			// 	//"...this.state.member means "all the members that are"
+			// 	// already in thit this.state.members array 
+			// 	members: [...this.state.members, createMemberJson.data]
+			// })
+		} // end of status code 201 (if statement) 
+
 
 		} catch(err) {
 		  console.error("problem adding member")
 		  console.error(err)
-		}
+		} // end of catch 
 		
-	}
+	} // end of create member method 
+
+
 
 	render() {
 		console.log("here is this.state in render() in MemberIndex")
