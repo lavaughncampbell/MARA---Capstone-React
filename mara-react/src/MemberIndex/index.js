@@ -78,9 +78,34 @@ export default class MemberIndex extends Component {
 										  // JSON if that's what you 
 										  // say you're gonnna do
 		})
+		console.log("createMemberResponse", createMemberResponse)
 		const createMemberJson = await createMemberResponse.json()
 		console.log("here is what we get back after trying to add a member")
 		console.log(createMemberJson)
+
+		// several ways to get the member to appear on screen automatically 
+
+		// really quick and dirty 
+		// this.getMembers()
+
+		// we could push it into the array in state 
+		const state = this.state 
+		state.members.push(createMemberJson.data)
+		this.setState(state)
+
+		// or this...
+		// const members = this.state.members 
+		// members.push(createMemberJson.data)
+		// this.setState({ members: members})
+
+		// or we could be super cool and use some newer syntax 
+		// this is called spread operator 
+		// // in REACT people are always using new syntax 
+		// this.setState({
+		// 	//"...this.state.member means "all the members that are"
+		// 	// already in thit this.state.members array 
+		// 	members: [...this.state.members, createMemberJson.data]
+		// })
 
 		} catch(err) {
 		  console.error("problem adding member")
