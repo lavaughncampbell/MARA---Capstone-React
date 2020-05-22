@@ -21,8 +21,8 @@ export default function MemberList(props) {
 		)
 	}
 	return(
-			<Card.Group>
-				{members}
-			</Card.Group>
+		<Card.Group>
+			{members}
+		</Card.Group>
 	)
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import MemberList from '../MemberList'
-
+import NewMemberForm from '../NewMemberForm'
 // you will see (Default) export written here instead of at the bottom 
 export default class MemberIndex extends Component {
 
@@ -9,6 +9,9 @@ export default class MemberIndex extends Component {
 
 		this.state = {
 			members: [] // members are going here in state 
+			// this is where the function that changes the array 
+			// we want to put the function in a place where they can
+			// easily access the data. 
 		}
 	}
 
@@ -51,13 +54,27 @@ export default class MemberIndex extends Component {
 		}
 	}
 
+
+	createMember = (memberToAdd) => {
+		console.log("here is the member you are trying to add")
+		console.log(memberToAdd)
+		// make a fetch call to our Flask API 
+		// method will be post 
+		// needs to have a body: coming form NewMemberForm 
+		// this will be passed down to NewMemberForm
+		// as props and call it in there and pass in the 
+		// we need to specify the content type is json 
+
+	}
+
 	render() {
 		console.log("here is this.state in render() in MemberIndex")
 		console.log(this.state)
 		return(
 			<React.Fragment>
-				<h2>Member Index</h2>
-				<MemberList members={this.state.members} />
+				<h2>List of the members</h2>
+				<NewMemberForm createMember={this.createMember} />
+				<MemberList members={this.state.members} /> 
 			</React.Fragment>
 		)
 	}
