@@ -1,4 +1,4 @@
-// lets render the member data on the screen now 
+// LETS RENDER THE MEMBER DATA ON THE SCREEN HERE!  
 import React from 'react'
 import { Card } from 'semantic-ui-react'
 
@@ -21,8 +21,11 @@ export default function MemberList(props) {
 		)
 	}
 	return(
-		<Card.Group>
-			{members}
-		</Card.Group>
+		<React.Fragment>
+		<h3>MemberList</h3> 
+			<Card.Group>
+				{members}
+			</Card.Group>
+		</React.Fragment>
 	)
 }

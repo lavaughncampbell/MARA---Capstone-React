@@ -59,12 +59,34 @@ export default class MemberIndex extends Component {
 		console.log("here is the member you are trying to add")
 		console.log(memberToAdd)
 		// make a fetch call to our Flask API 
-		// method will be post 
-		// needs to have a body: coming form NewMemberForm 
-		// this will be passed down to NewMemberForm
-		// as props and call it in there and pass in the 
-		// we need to specify the content type is json 
 
+		try {
+
+		const url = process.env.REACT_APP_API_URL + "/api/v1/members/"
+		const createMemberResponse = await fetch(url, {
+			// method will be post 
+			method: 'POST',
+			// we need to specify the content type is json LOOK AT FETCH API DOCS FOR ALL OF THIS
+			headers: {
+				'Content-Type': 'application/json'
+			}, 
+
+			// needs to have a body: coming form NewMemberForm 
+			// this will be passed down to NewMemberForm
+			// as props and call it in there and pass in the 
+			body: JSON.stringify(memberToAdd) // make sure to actually send 
+										  // JSON if that's what you 
+										  // say you're gonnna do
+		})
+		const createMemberJson = await createMemberResponse.json()
+		console.log("here is what we get back after trying to add a member")
+		console.log(createMemberJson)
+
+		} catch(err) {
+		  console.error("problem adding member")
+		  console.error(err)
+		}
+		
 	}
 
 	render() {
