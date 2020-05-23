@@ -192,6 +192,13 @@ export default class MemberIndex extends Component {
 	} // end of create member method 
 
 
+
+
+
+
+
+
+
 	// <---------EDIT-------------->
 	editMember = (idOfMemberToEdit) => {
 		console.log("you are trying to edit member with id", idOfMemberToEdit)
@@ -200,6 +207,62 @@ export default class MemberIndex extends Component {
 		this.setState({
 			idOfMemberToEdit: idOfMemberToEdit
 		})
+	}
+
+
+
+
+
+
+
+
+
+
+	// <---------UPDATE-------------->
+	updateMember = async (updatedMemberinfo) => {
+		// db query to update member 
+		const url = process.env.REACT_APP_API_URL + "/api/v1/members/" + this.state.idOfMemberToEdit
+
+		try {
+			const updateMemberResponse = await fetch(url, {
+				method: 'PUT', 
+				body: JSON.stringify(updatedMemberinfo), 
+				headers: {
+				'Content-Type': 'application/json'
+				}
+			})
+			console.log("updateMemberResponse", updateMemberResponse)
+			const updateMemberJson = await updateMemberResponse.json()
+			console.log("updateMemberJson", updateMemberJson)
+
+			if(updateMemberResponse == 200) {
+				const members = this.state.members
+				const indexOfMemberBeingUpdated = members.findIndex(member => member.id == this.state.idOfMemberToEdit)
+				members[indexOfMemberBeingUpdated] = updateMemberJson.data
+				this.setState({
+					members: members
+					idOfMemberToEdit: -1 // close the edit member modal 
+				})
+			}
+
+		} catch(err) {
+			console.error("Error updating member info") 
+			console.error(err)
+		}
+
+
+
+
+
+
+
+
+
+
+		// replace the member at the currently selected id in state 
+		// with the updatedDogInfo 
+		const members = this.state.members
+
 	}
 
 
@@ -226,7 +289,15 @@ export default class MemberIndex extends Component {
 				deleteMember={this.deleteMember}
 				editMember={this.editMember}
 				/>
-				{ this.state.idOfMemberToEdit !== -1 && <EditMemberModal /> } 				
+				{ 
+					this.state.idOfMemberToEdit !== -1 
+					&& 
+					<EditMemberModal 
+						memberToEdit={this.state.members.find((member) => member.id === this.state.idOfMemberToEdit)}
+						updateMember={this.updateMember}
+					/> 
+				}
+			} 				
 			</React.Fragment>
 		)
 	}
