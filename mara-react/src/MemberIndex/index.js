@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import MemberList from '../MemberList'
 import NewMemberForm from '../NewMemberForm'
+import EditMemberModal from '../EditMemberModal'
 // you will see (Default) export written here instead of at the bottom 
 export default class MemberIndex extends Component {
 
@@ -8,10 +9,11 @@ export default class MemberIndex extends Component {
 		super(props)
 
 		this.state = {
-			members: [] // members are going here in state 
+			members: [], // members are going here in state 
 			// this is where the function that changes the array 
 			// we want to put the function in a place where they can
 			// easily access the data. 
+			idOfMemberToEdit: -1 // track id of member we want to edit.
 		}
 	}
 
@@ -64,6 +66,12 @@ export default class MemberIndex extends Component {
 
 
 
+
+
+
+
+
+
 	// <---------DELETE-------------->
 	// add a deleteMember function here 
 	deleteMember = async (idOfMemberToDelete) => {
@@ -105,7 +113,7 @@ export default class MemberIndex extends Component {
 		}
 
 
-	}
+	} 
 
 
 
@@ -184,6 +192,17 @@ export default class MemberIndex extends Component {
 	} // end of create member method 
 
 
+	// <---------EDIT-------------->
+	editMember = (idOfMemberToEdit) => {
+		console.log("you are trying to edit member with id", idOfMemberToEdit)
+		// put the id of the member we want to edit in state 
+		// to conditionally render a modal 
+		this.setState({
+			idOfMemberToEdit: idOfMemberToEdit
+		})
+	}
+
+
 
 
 
@@ -205,7 +224,9 @@ export default class MemberIndex extends Component {
 				<MemberList 
 				members={this.state.members} 
 				deleteMember={this.deleteMember}
-				/> 
+				editMember={this.editMember}
+				/>
+				{ this.state.idOfMemberToEdit !== -1 && <EditMemberModal /> } 				
 			</React.Fragment>
 		)
 	}

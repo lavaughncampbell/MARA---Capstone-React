@@ -25,6 +25,13 @@ export default function MemberList(props) {
 					>
 						Delete {member.name}
 					</Button>
+					<Button 
+					basic 
+					color='green'
+					onClick={() => props.editMember(member.id)}
+					>
+						Edit {member.name}
+					</Button>
 				</Card.Content>
 
 			</Card>
