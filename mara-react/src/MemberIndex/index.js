@@ -23,6 +23,12 @@ export default class MemberIndex extends Component {
 	// call members when component is mounted to see them on the page 
 	// define a method called get members 
 
+
+
+
+
+
+
 	// <---------INDEX-------------->
 	getMembers = async () => {
 		try {
@@ -56,8 +62,63 @@ export default class MemberIndex extends Component {
 		}
 	}
 
+
+
+	// <---------DELETE-------------->
+	// add a deleteMember function here 
+	deleteMember = async (idOfMemberToDelete) => {
+		// it should send a request to delete member 
+		const url = process.env.REACT_APP_API_URL + "/api/v1/members/" + idOfMemberToDelete
+
+		try {
+			const deleteMemberResponse = await fetch(url, {
+				method: 'DELETE'
+			})
+			console.log("deleteMemberResponse", deleteMemberResponse)
+			const deleteMemberJson = await deleteMemberResponse.json()
+			console.log("deleteMemberJson", deleteMemberJson);
+			// it should take an id of the member to delete 
+			
+			// quick and dirty to show the change on the screen
+			// this.getMembers()
+
+			// // this is better 
+			const members = this.state.members
+			let indexOfMemberToDelete = 0
+			for(let i = 0; i < members.length; i++) {
+				if(members[i].id == idOfMemberToDelete) {
+					indexOfMemberToDelete = i;
+					break;
+				}
+			}
+			members.splice(indexOfMemberToDelete, 1)
+			this.setState)({ 
+				members: members 
+			})
+
+			// it should send a request to detete member 
+			// when it hears back that there was a success 
+		} catch(err) {
+			console.error("Error deleting member")
+			console.error(err)
+
+		}
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
 	// <---------CREATE-------------->
-	createMember = (memberToAdd) => {
+	createMember = async (memberToAdd) => {
 		console.log("here is the member you are trying to add")
 		console.log(memberToAdd)
 		// make a fetch call to our Flask API 
@@ -124,6 +185,16 @@ export default class MemberIndex extends Component {
 
 
 
+
+
+
+
+
+
+
+
+
+
 	render() {
 		console.log("here is this.state in render() in MemberIndex")
 		console.log(this.state)
@@ -131,7 +202,10 @@ export default class MemberIndex extends Component {
 			<React.Fragment>
 				<h2>List of the members</h2>
 				<NewMemberForm createMember={this.createMember} />
-				<MemberList members={this.state.members} /> 
+				<MemberList 
+				members={this.state.members} 
+				deleteMember={this.deleteMember}
+				/> 
 			</React.Fragment>
 		)
 	}

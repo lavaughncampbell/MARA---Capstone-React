@@ -19,6 +19,10 @@ export default function NewMemberForm({createMember}) {
 
   const handleSubmit = event => {
     event.preventDefault()
+    // call a method passed downn from the parent 
+    // to make state data from this component available 
+    // in the parent component so from the child to the parent
+    // THIS IS CALLED LIFTING UP STATE!
     createMember(member)
   }
 
@@ -111,3 +115,7 @@ export default class NewDogForm extends Component {
   }
 }
 */
+
+
+
+// MIGHT HAVE TO REVISIT AND UNCOMMENT THIS CODE TO USE TO CREATE A NEW MEMBER" 

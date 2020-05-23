@@ -1,6 +1,6 @@
 // LETS RENDER THE MEMBER DATA ON THE SCREEN HERE!  
 import React from 'react'
-import { Card } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 
 export default function MemberList(props) {
 	console.log("props in MemberList")
@@ -17,6 +17,16 @@ export default function MemberList(props) {
 				{member.name} has a email {member.email}
 				</Card.Description>
 				</Card.Content>
+				<Card.Content textAlign=("center")>
+					<Button 
+					basic 
+					color='red'
+					onClick={() => props.deleteMember(member.id)}
+					>
+						Delete {member.name}
+					</Button>
+				</Card.Content>
+
 			</Card>
 		)
 	}
