@@ -23,7 +23,7 @@ export default class App extends Component {
 				? 
 				<MemberIndex />
 				: 
-				<LoginRegisterForm />
+				<Loading />
 			}
 			</div> 
 		); 

@@ -18,3 +18,9 @@ body > #root > div {
   height: 100vh;
   background-color: #B9DFFF;
 }
+
+.fake-link {
+  cursor: pointer;
+  color: blue; 
+  text-decoration: underline;
+}
