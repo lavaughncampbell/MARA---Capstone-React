@@ -14,6 +14,7 @@ export default class MemberIndex extends Component {
 			// we want to put the function in a place where they can
 			// easily access the data. 
 			idOfMemberToEdit: -1 // track id of member we want to edit.
+
 		}
 	}
 
@@ -75,46 +76,45 @@ export default class MemberIndex extends Component {
 	// <---------DELETE-------------->
 	// add a deleteMember function here 
 	deleteMember = async (idOfMemberToDelete) => {
-		// it should send a request to delete member 
-		const url = process.env.REACT_APP_API_URL + "/api/v1/members/" + idOfMemberToDelete
-
-		try {
-			const deleteMemberResponse = await fetch(url, {
-				method: 'DELETE'
-			})
-			console.log("deleteMemberResponse", deleteMemberResponse)
-			const deleteMemberJson = await deleteMemberResponse.json()
-			console.log("deleteMemberJson", deleteMemberJson);
-			// it should take an id of the member to delete 
-			
-			// quick and dirty to show the change on the screen
-			// this.getMembers()
-
-			// // this is better 
-			const members = this.state.members
-			let indexOfMemberToDelete = 0
-			for(let i = 0; i < members.length; i++) {
-				if(members[i].id == idOfMemberToDelete) {
-					indexOfMemberToDelete = i;
-					break;
-				}
-			}
-			members.splice(indexOfMemberToDelete, 1)
-			this.setState)({ 
-				members: members 
-			})
-
-			// it should send a request to detete member 
-			// when it hears back that there was a success 
-		} catch(err) {
-			console.error("Error deleting member")
-			console.error(err)
-
-		}
-
-
-	} 
-
+    // it should send a request to delete dog
+    const url = process.env.REACT_APP_API_URL + "/api/v1/members/" + idOfMemberToDelete
+    try {
+      const deleteMemberResponse = await fetch(url, {
+        credentials: 'include',
+        method: 'DELETE'
+      })
+      console.log("deleteMemberResponse", deleteMemberResponse);
+      const deleteMemberJson = await deleteMemberResponse.json()
+      console.log("deleteMemberJson", deleteMemberJson);
+      // when it hears back that there was a success, it should
+      // remove that dog from the array in state      
+      if(deleteMemberResponse.status == 200) {
+        // this.getDogs() // this is a little on the q & d side
+        // let's remove it from the array in state instead
+        // this is better -- doesn't require extra trip
+        // to db
+        const members = this.state.members
+        let indexOfMemberToDelete = 0
+        for(let i = 0; i < members.length; i++) {
+          if(members[i].id == idOfMemberToDelete) {
+            indexOfMemberToDelete = i;
+            break;
+          }
+        }
+        members.splice(indexOfMemberToDelete, 1)
+        this.setState({ members: members })
+        // or you can use filter
+        // this.setState({
+        //   dogs: this.state.dogs.filter(dog => dog.id != idOfDogToDelete)
+        // })
+        // pass this f as props to DogList
+        // and make the button call it         
+      }
+    } catch(err) {
+      console.error("Error deleting member:");
+      console.error(err);
+    }
+  }
 
 
 
@@ -240,7 +240,7 @@ export default class MemberIndex extends Component {
 				const indexOfMemberBeingUpdated = members.findIndex(member => member.id == this.state.idOfMemberToEdit)
 				members[indexOfMemberBeingUpdated] = updateMemberJson.data
 				this.setState({
-					members: members
+					members: members,
 					idOfMemberToEdit: -1 // close the edit member modal 
 				})
 			}
@@ -249,26 +249,11 @@ export default class MemberIndex extends Component {
 			console.error("Error updating member info") 
 			console.error(err)
 		}
-
-
-
-
-
-
-
-
-
-
 		// replace the member at the currently selected id in state 
 		// with the updatedDogInfo 
-		const members = this.state.members
+		// const members = this.state.members
 
 	}
-
-
-
-
-
 
 
 

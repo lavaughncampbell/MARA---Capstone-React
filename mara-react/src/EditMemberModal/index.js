@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Button, Label, Segment } from 'semantic-ui-react'
 
-class EditMemberModal extends Component {
+export default class EditMemberModal extends Component {
 	constructor(props) {
 		super(props)
 
@@ -40,7 +40,7 @@ class EditMemberModal extends Component {
 					<Form.Input 
 						type="text"
           				name="name"
-          				value={member.name}
+          				value={this.member.name}
           				placeholder="Enter a name"
           				onChange={this.handleChange}  
         			/>
@@ -48,7 +48,7 @@ class EditMemberModal extends Component {
         			<Form.Input 
         				type="email"
         				name="email"
-          				value={member.email}  
+          				value={this.member.email}  
           				placeholder="Enter a email"
           				onChange={this.handleChange}
         			/>
