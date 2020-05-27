@@ -5,6 +5,7 @@ import Loading from './components/loading.js';
 import HomePage from './HomePage'
 import MainContent from './MainContent'
 import MemberIndex from './MemberIndex'
+import LoginRegisterForm from './LoginRegisterForm'
 
 export default class App extends Component {
 	constructor() {
@@ -22,7 +23,7 @@ export default class App extends Component {
 				? 
 				<MemberIndex />
 				: 
-				"Not logged in"
+				<LoginRegisterForm />
 			}
 			</div> 
 		); 
